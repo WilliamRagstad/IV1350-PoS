@@ -4,6 +4,9 @@ import java.util.Date;
 
 import se.kth.iv1350.pos.util.DiscountID;
 
+/**
+ * A discount that can be applied in a sale
+ */
 public class Discount {
 	private DiscountID identifier;
 	private String description;

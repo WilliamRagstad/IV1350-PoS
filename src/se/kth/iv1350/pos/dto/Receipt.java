@@ -5,6 +5,9 @@ import java.util.Date;
 import java.util.Dictionary;
 import java.util.HashMap;
 
+/**
+ * A proof of a sale by a store containing all information about the sale.
+ */
 public class Receipt {
 	private int ID;
 	private String store;

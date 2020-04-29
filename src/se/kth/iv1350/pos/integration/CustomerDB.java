@@ -8,6 +8,9 @@ import se.kth.iv1350.pos.util.Customer;
 import se.kth.iv1350.pos.util.CustomerID;
 import se.kth.iv1350.pos.util.CustomerNotFoundException;
 
+/**
+ * Takes care of the customer database. This is just a simulation of a real customer database.
+ */
 public class CustomerDB {
 
 	private HashMap<CustomerID, Customer> customers; // Dictionary<> was replaced with HashMap<>
@@ -36,6 +39,12 @@ public class CustomerDB {
 	}
 
 
+	/**
+	 * Fetches a customers eligable discounts
+	 * @param customer to fetch discounts from
+	 * @return discount array
+	 * @throws CustomerNotFoundException is thrown if the customer does not exist
+	 */
 	public ArrayList<Discount> getDiscounts(CustomerID customer) throws CustomerNotFoundException {
 		for(CustomerID id : customers.keySet()) {
 			if (id == customer) {
@@ -45,6 +54,11 @@ public class CustomerDB {
 		throw new CustomerNotFoundException("The customer could not be found in the database");
 	}
 
+	/**
+	 * Consume a discount
+	 * @param customerID represents the customer that uses the discount
+	 * @param discount in question
+	 */
 	public void useDiscount(CustomerID customerID, Discount discount) {
 		Customer customer = customers.get(customerID);
 		ArrayList<Discount> eligableDiscounts = customer.getEligableDiscounts();

@@ -29,10 +29,19 @@ public class Controller {
 		this.register = register;
 	}
 	
+	/**
+	 * Starts a new sale, allowing other methods to be called
+	 */
 	public void initializeSale() {
 		sale = new Sale();
 	}
 	
+	/**
+	 * Add an item to the current sale
+	 * @param identifier specifies the item to be added
+	 * @param quantity specifies how many of that item should be added
+	 * @throws ItemOutOfStockException is thrown if the item id is not valid
+	 */
 	public void addItem(ItemID identifier, int quantity) throws ItemOutOfStockException
 	{
 		if (itemRegistry.inStock(identifier)) {
@@ -43,15 +52,31 @@ public class Controller {
 			throw new ItemOutOfStockException("The item with id: " + identifier.toString() + " could not be found in the inventory.");
 	}
 
+	/**
+	 * Fetches an array of eligable discounts that a customer have.
+	 * @param customer specifies which customer's discounts should be fetched
+	 * @return an array of discounts
+	 * @throws CustomerNotFoundException is thrown if the customer does not exist in the customer database.
+	 */
 	public ArrayList<Discount> requestDiscount(CustomerID customer) throws CustomerNotFoundException {
 		return customerDB.getDiscounts(customer);
 	}
 
+	/**
+	 * Consumes and applies a discount that a customer have
+	 * @param customer the customer that uses the discount
+	 * @param discount the discount in question
+	 */
 	public void useDiscount(CustomerID customer, Discount discount) {
 		customerDB.useDiscount(customer, discount);
 		sale.applyDiscount(discount);
 	}
 
+	/**
+	 * Ends the current sale by calculating the change after payment and removes the sale object.
+	 * @param payment is the amount that should be payed. This is shown in the View.
+	 * @return change
+	 */
 	public float endSale(int payment) {
 		float total = sale.getTotal();
 		itemRegistry.update(sale.getItems());

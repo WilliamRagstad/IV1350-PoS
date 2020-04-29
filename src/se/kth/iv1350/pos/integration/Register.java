@@ -6,6 +6,9 @@ import se.kth.iv1350.pos.dto.Discount;
 import se.kth.iv1350.pos.dto.Item;
 import se.kth.iv1350.pos.dto.Receipt;
 
+/**
+ * Takes care of the communication to the physical register.
+ */
 public class Register {
 	PrintStream receiptPrinter;
 	private float money;
@@ -22,10 +25,18 @@ public class Register {
 		this.money = money;
 	}
 
+	/**
+	 * Adds money to the register
+	 * @param ammount to be added
+	 */
 	public void registerPayment(float ammount) {
 		money += ammount;
 	}
 	
+	/**
+	 * Prints a receipt from the physical receipt printer.
+	 * @param receipt holding information about the sale to be printed.
+	 */
 	public void printReceipt(Receipt receipt) {
 		// Simulate printing physical receipt from the register
 		receiptPrinter.println("========= Receipt =========");

@@ -28,9 +28,9 @@ public class View {
 	}
 	
 	/**
-	 * Simulates a real PoS situation.
+	 * Simulates a inputs from a real PoS situation.
 	 */
-	public void SampleExecution() {
+	public void sampleExecution() {
 		// Initialize scanner for user input
 		Scanner sc = new Scanner(System.in);
 		

@@ -5,7 +5,7 @@ import se.kth.iv1350.pos.controller.*;
 import se.kth.iv1350.pos.view.*;
 
 /**
- * Starts the entire application, contains the main mathod used to start the application.
+ * Starts the entire application, contains the main method used to start the application.
  */
 public class Main {
 	private static AccountingSystem accountingSystem;
@@ -40,7 +40,7 @@ public class Main {
 		view = new View(controller);
 		
 		// Run sample execution that simulates a real PoS situation
-		view.SampleExecution();
+		view.sampleExecution();
 	}
 	
 }

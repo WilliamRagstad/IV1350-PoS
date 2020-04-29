@@ -2,6 +2,9 @@ package se.kth.iv1350.pos.dto;
 
 import se.kth.iv1350.pos.util.ItemID;
 
+/**
+ * An item that can exist in a store
+ */
 public class Item {
 	private ItemID identifier;
 	private String name;
